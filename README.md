@@ -53,7 +53,7 @@ $$\pi_i(d) = \pi_s \hat{\tau_i}^{conversion}(d) d - \text{cost\_unsubscribe}*\ha
 
 replacing with the beta values we have: 
 
-$$\pi_i(d) = \pi_s *sigm(\hat{\beta}_0^{c}+ \hat{\beta}_1^{c}d + \hat{\beta}_2^{c}x_i + \hat{\beta}_3^{c} dx_i) - `\text{cost\_unsubscribe}` *sigm(\hat{\beta}_0^{u}+ \hat{\beta}_1^{u}d + \hat{\beta}_2^{u}x_i + \hat{\beta}_3^{u} dx_i)$$
+$$\pi_i(d) = \pi_s *sigm(\hat{\beta}_0^{c}+ \hat{\beta}_1^{c}d + \hat{\beta}_2^{c}x_i + \hat{\beta}_3^{c} dx_i) - \text{cost\\_unsubscribe} *sigm(\hat{\beta}_0^{u}+ \hat{\beta}_1^{u}d + \hat{\beta}_2^{u}x_i + \hat{\beta}_3^{u} dx_i)$$
 
 we can then optimize this function to gather the optimum N for each client:
 
