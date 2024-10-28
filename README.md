@@ -12,7 +12,7 @@ In order to solve this problem, we want to estimate  $\hat{\tau}(D=d)$ that repr
 
 Thinking on a basic Inference model we could think on running multiples experiments with different volumes of notifications $d \in [1,2,5,10]$ and then test the group that maximizes the expected value. 
 
-$$\hat{ATE}(D=d)$$
+$$\hat{ATE}(D=d) \quad d \in [1,2,5,10]$$
 
 In our example we can evaluate the expected profit $\pi$ as the sum of total subscriptions purchased ($\pi_s*s$) minus the number of unsubscriptions ($u$) with their expected future value discounted
 
@@ -23,7 +23,7 @@ We could run a simple experiment with all treatments $d \in [1,2,5,10]$ and then
 
 ### CATE estimator and the heterogeneity effect
 
-Let's assume that I have a model that can infer the effect of the treatment $D=d$ on for example the probability of a user to purchase the premium subscription $Y_{conversion}$. Our model will look like this:
+Let's assume that I have a model that can infer the effect of the treatment $D=d$ on the outcome $Y^i$ in each one of our clients ($X_i$). For example, the probability of a user to purchase the premium subscription $Y_{conversion}$. Our model will look like this:
 
 $$Y_{conversion}^{i} = f(D=d|X_i)$$
 
@@ -65,3 +65,4 @@ $$\max_{d}{\pi_i(d)}$$
 
 ## Simulation Example
 
+![alt text](profit_curves_plot.png)
