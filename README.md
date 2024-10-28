@@ -10,7 +10,11 @@ At the same time, overusing the notifications can make users block the notificat
 
 In order to solve this problem, we want to estimate  $\hat{\tau}(D=d)$ that represents the effect of the treatment $D=d$ on the population. For the sake of the example let's think on CRM messages to entice our user to purchase a premium subscription. $d$ will be the number of notifications that I will send to each user in a period of a month (for example). 
 
-Thinking on a basic Inference model we could think on running multiples experiments with different volumes of notifications $d \in [1,2,5,10]$ and then test the group that maximizes the expected value. In our example we can evaluate the expected profit $\pi$ as the sum of total subscriptions purchased ($\pi_s*s$) minus the number of unsubscriptions ($u$) with their expected future value discounted
+Thinking on a basic Inference model we could think on running multiples experiments with different volumes of notifications $d \in [1,2,5,10]$ and then test the group that maximizes the expected value. 
+
+$$\hat{ATE}(D=d)$$
+
+In our example we can evaluate the expected profit $\pi$ as the sum of total subscriptions purchased ($\pi_s*s$) minus the number of unsubscriptions ($u$) with their expected future value discounted
 
 $$\hat{\tau}(d) = \pi(d) = \pi_s*s - \text{cost}_{unsubscribe}*u$$
 
