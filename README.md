@@ -12,7 +12,7 @@ In order to solve this problem, we want to estimate  $\hat{\tau}(D=d)$ that repr
 
 Thinking on a basic Inference model we could think on running multiples experiments with different volumes of notifications $d \in [1,2,5,10]$ and then test the group that maximizes the expected value. In our example we can evaluate the expected profit $\pi$ as the sum of total subscriptions purchased ($\pi_s*s$) minus the number of unsubscriptions ($u$) with their expected future value discounted
 
-$$\hat{\tau}(d) = \pi(d) = \pi_s*s - \text{cost\_unsubscribe}*u$$
+$$\hat{\tau}(d) = \pi(d) = \pi_s*s - \text{cost}_{unsubscribe}*u$$
 
 
 We could run a simple experiment with all treatments $d \in [1,2,5,10]$ and then evaluate what is the treatment with higher expected value $\pi(d)$. However, what if I could choose the amount of notifications per user $i$ that maximizes the user expected value ?. Let's introduce the [CATE estimator](https://matheusfacure.github.io/python-causality-handbook/18-Heterogeneous-Treatment-Effects-and-Personalization.html)
@@ -49,11 +49,11 @@ $$\hat{Y}^{unsubscribe}(d) = sigmoid(\hat{\beta}_0^{u}+ \hat{\beta}_1^{u}d + \ha
 
 Thinking on the expected outcome of sending $d$ notifications to the user $i$ we have the following formula: 
 
-$$\pi_i(d) = \pi_s \hat{\tau_i}^{conversion}(d) d - \text{cost\_unsubscribe}*\hat{\tau_i}^{unsubscribe}(d) d $$
+$$\pi_i(d) = \pi_s \hat{\tau_i}^{conversion}(d) d - \text{cost}_{unsubscribe}*\hat{\tau_i}^{unsubscribe}(d) d $$
 
 replacing with the beta values we have: 
 
-$$\pi_i(d) = \pi_s *sigm(\hat{\beta}_0^{c}+ \hat{\beta}_1^{c}d + \hat{\beta}_2^{c}x_i + \hat{\beta}_3^{c} dx_i) - \text{cost\\_unsubscribe} *sigm(\hat{\beta}_0^{u}+ \hat{\beta}_1^{u}d + \hat{\beta}_2^{u}x_i + \hat{\beta}_3^{u} dx_i)$$
+$$\pi_i(d) = \pi_s *sigm(\hat{\beta}_0^{c}+ \hat{\beta}_1^{c}d + \hat{\beta}_2^{c}x_i + \hat{\beta}_3^{c} dx_i) - \text{cost}_{unsubscribe} *sigm(\hat{\beta}_0^{u}+ \hat{\beta}_1^{u}d + \hat{\beta}_2^{u}x_i + \hat{\beta}_3^{u} dx_i)$$
 
 we can then optimize this function to gather the optimum N for each client:
 
