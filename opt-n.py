@@ -86,14 +86,11 @@ def plot_pi_for_contractors(x, d_range=np.linspace(0, 50, 100)):
 # Plot π for the selected contractors over a range of d values
 plot_pi_for_contractors(x)
 
-# optimize 
+# Optimize using scipy minimize
 from scipy.optimize import minimize
 
 initial_guess = np.ones(num_contractors)
 bounds = [(0, None)] * num_contractors  # Non-negative d for each contractor
-
-# Optimize using scipy minimize
-
 def objective(d: np.ndarray, x: np.ndarray) -> float:
     return -np.sum(pi(d, x))  # We negate to maximize
 

@@ -144,3 +144,16 @@ print("The optimal values of d that maximize π are:")
 print(optimal_d)
 ```
 
+which outputs the optimum notification values:
+
+    The optimal values of d that maximize π are:
+    [1.14539061e+02 
+    0.00000000e+00 
+    4.01680530e+01 
+    2.27159468e+01
+    4.83272758e+01 
+    5.38936299e+01 
+    3.95627651e+01 
+    9.88400349e+01
+    ...
+    ]
