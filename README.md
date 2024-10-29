@@ -19,33 +19,34 @@ In our example we can evaluate the expected profit $\pi$ as the sum of total sub
 $$\hat{\tau}(d) = \pi(d) = \pi_s*s - \text{cost}_{unsubscribe}*u$$
 
 
-We could run a simple experiment with all treatments $d \in [1,2,5,10]$ and then evaluate what is the treatment with higher expected value $\pi(d)$. However, what if I could choose the amount of notifications per user $i$ that maximizes the user expected value ?. Let's introduce the [CATE estimator](https://matheusfacure.github.io/python-causality-handbook/18-Heterogeneous-Treatment-Effects-and-Personalization.html)
+We could run a simple experiment with all treatments $d \in [1,2,5,10]$ and then evaluate what is the treatment with higher expected value $\pi(d)$. However, what if I could choose the amount of notifications per user $i$ that maximizes the user expected value ?. 
+
+Let's introduce the [CATE estimator](https://matheusfacure.github.io/python-causality-handbook/18-Heterogeneous-Treatment-Effects-and-Personalization.html)
 
 ### CATE estimator and the heterogeneity effect
 
 Let's assume that I have a model that can infer the effect of the treatment $D=d$ on the outcome $Y^i$ in each one of our clients ($X_i$). For example, the probability of a user to purchase the premium subscription $Y_{conversion}$. Our model will look like this:
 
-$$Y_{conversion}^{i} = f(D=d|X_i)$$
+$$\matbb{P}(Y_{conversion}^{i}) = f(D=d|X_i)$$
 
-Where $X_i$ is a vector of features that describe the user i. Now we are interested on estimating the "sensitivity" of the user $i$ to the "treatment" (notifications) $d$. Similarly to the case of the ATE, we will call this effect estimator $\hat{\tau_i}(d)$. This model is known as CATE estimator (Conditional Average Treatment Effect) because we are estimating the treatment effect given the user characteristics $X_i$
+Where $X_i$ is a vector of features that describe the user $i$. Now, we are interested on estimating the "sensitivity" of the user $i$ to the "treatment" (notifications) $d$. Similarly to the case of the ATE, we will call this effect estimator $\hat{\tau_i}(d)$. This model is known as CATE estimator (Conditional Average Treatment Effect). Its called "Conditional" estimator because we are "conditioning" the model to the user characteristics $X_i$. 
 
 $${\tau_i}(d)=E[Y_{conversion}=1|d]- E[Y_{conversion}=0|d]$$
 
-The most natural way to think on solving this consist on fitting a ML algorithm to predict $Y(d)$ and then estimate the effect of different treatments. however fitting a ML model out of the box can bring [undesired consequences](https://matheusfacure.github.io/python-causality-handbook/When-Prediction-Fails.html). for the sake of simplicity we wold fit the easiest Inference model that we can think of as an estimator for this effect, the legend, the linear regression. 
+The most natural way to think on solving this consist on fitting a ML algorithm to predict $Y(d)$ and then estimate the effect of different treatments. However, fitting a ML model out of the box can bring [undesired consequences](https://matheusfacure.github.io/python-causality-handbook/When-Prediction-Fails.html). For the sake of simplicity on this example we will fit the easiest Inference model, the unique, the legend, the linear regression (logit in this probabilistic case ).  
 
 $$Y_{conversion}(d) = f(D=d|X_i) =  logit(\hat{\beta}_0+ \hat{\beta}_1d + \hat{\beta}_2x_i + \hat{\beta}_3 dx_i)$$
 
-finally, our sensitivity estimator will be given by:
+Therefore, our sensitivity estimator will be given by:
 
 $$\hat{\tau_i}(d) = \frac{\delta Y_{conversion}(d)}{\delta d} = ...$$
 
-then we have a way to use past data to estimate the sensitivity to buy the premium subscription to the number of notifications. 
+Now we have a way to use past data to estimate the sensitivity to buy the premium subscription given certain number of notifications. 
 
 ### Choosing the optimum number of notifications
 
 how can we use the CATE estimator to choose the optimum number of notifications ?. 
-Firstly, let's fit two CATE estimators to estimate the probability of conversion ($Y_{conversion}=1$) and the probability of unsubscribe ($Y_{unsubscribe}=1$). Once we fit both models we can estimate the CATE for both outcomes:
-
+First, let's fit two CATE estimators to estimate the probability of conversion ($\mathbb{P}(Y_{conversion}=1)$) and the probability of unsubscribe ($\mathbb{P}(Y_{unsubscribe}=1)$). Once we fit both models we can estimate the CATE for both outcomes:
 
 
 $$\hat{Y}^{conversion}(d) = sigmoid(\hat{\beta}_0^{c}+ \hat{\beta}_1^{c}d + \hat{\beta}_2^{c}x_i + \hat{\beta}_3^{c} dx_i)$$
