@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from scipy.special import expit
 
 np.random.seed(42)
 num_contractors = 1000
@@ -20,6 +19,8 @@ contractors_df.to_csv('dataset.csv', index=False)
 
 # Simulate hidden variables 
 # conversion betas
+from scipy.special import expit
+
 beta_c_x = np.array([1/40, -1/200, 1/10, 1/500000, -1/50])
 beta_c_d = np.array([1/20])
 beta_c_dx = beta_c_x * beta_c_d * (-0.5)
