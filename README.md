@@ -27,7 +27,7 @@ Let's introduce the [CATE estimator](https://matheusfacure.github.io/python-caus
 
 Let's assume that I have a model that can infer the effect of the treatment $D=d$ on the outcome $Y^i$ in each one of our clients ($X_i$). For example, the probability of a user to purchase the premium subscription $Y_{conversion}$. Our model will look like this:
 
-$$\mathbb{P}(Y_{conversion}^{i}) = f(D=d|X_i)$$
+$$P(Y_{conversion}^{i}) = f(D=d|X_i)$$
 
 Where $X_i$ is a vector of features that describe the user $i$. Now, we are interested on estimating the "sensitivity" of the user $i$ to the "treatment" (notifications) $d$. Similarly to the case of the ATE, we will call this effect estimator $\hat{\tau_i}(d)$. This model is known as CATE estimator (Conditional Average Treatment Effect). Its called "Conditional" estimator because we are "conditioning" the model to the user characteristics $X_i$. 
 
@@ -46,7 +46,7 @@ Now we have a way to use past data to estimate the sensitivity to buy the premiu
 ### Choosing the optimum number of notifications
 
 how can we use the CATE estimator to choose the optimum number of notifications ?. 
-First, let's fit two CATE estimators to estimate the probability of conversion ($\mathbb{P}(Y_{conversion}=1)$) and the probability of unsubscribe ($\mathbb{P}(Y_{unsubscribe}=1)$). Once we fit both models we can estimate the CATE for both outcomes:
+First, let's fit two CATE estimators to estimate the probability of conversion ($P(Y_{conversion}=1)$) and the probability of unsubscribe ($P(Y_{unsubscribe}=1)$). Once we fit both models we can estimate the CATE for both outcomes:
 
 
 $$\hat{Y}^{conversion}(d) = sigmoid(\hat{\beta}_0^{c}+ \hat{\beta}_1^{c}d + \hat{\beta}_2^{c}x_i + \hat{\beta}_3^{c} dx_i)$$
