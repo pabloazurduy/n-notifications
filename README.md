@@ -1,5 +1,5 @@
 # Optimizing number of push notifications
-A small example on optimizing the number of optimization using a [CATE estimator](https://matheusfacure.github.io/python-causality-handbook/18-Heterogeneous-Treatment-Effects-and-Personalization.html).  
+A small example on optimizing the number of notifications using a [CATE estimator](https://matheusfacure.github.io/python-causality-handbook/18-Heterogeneous-Treatment-Effects-and-Personalization.html).  
 
 ### Problem statement
 We would like to estimate the number of notifications ($D = d$) that you would like to send to a user in order to maximize the expected conversion. For example, you can think on notifications of a CRM campaign to promote a membership program / premium subscription.
